@@ -1,0 +1,51 @@
+<div>
+  <h2 class="text-center text-bold text-3xl my-5">Child Component</h2>
+  <p class="text-center text-bold text-xl my-5">Get Data from Parent Component
+    <br>Name:
+    <span>
+      {{ dataFromParent.enter_text }}
+    </span>
+    <br>Status:
+    <span *ngIf="dataFromParent.status == 1; else elseBlock">
+      Active
+    </span>
+    <ng-template #elseBlock>Inactive</ng-template>
+  </p>
+  <p class="text-center text-bold text-xl my-5">Send Data To Parent Component</p>
+  <div class="w-8/12 mx-auto">
+    <form [formGroup]="childForm" (ngSubmit)="sendDataToParent(childForm)" class="w-full" enctype="multipart/form-data">
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-name">
+            Enter Child Name
+          </label>
+          <input formControlName="name"
+            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+            id="grid-name" type="text" placeholder="Enter Child Name">
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-status">
+            Is Active
+          </label>
+          <div class="">
+            <select formControlName="status"
+              class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="grid-status">
+              <option value="">Select IsActive</option>
+              <option value="1">Active</option>
+              <option value="0">Inactive</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3">
+          <button type="submit" class="p-3 bg-indigo-900 text-white w-full">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+
+</div>
